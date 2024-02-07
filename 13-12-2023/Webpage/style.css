@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.carousel{
+    width: 100%;
+    height: 700px;
+}
+
+.carousel-inner{
+    height: inherit;
+}
+
+.carousel-item{
+    height: 100%;
+}
+
+.photos{
+    height: 144vh;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around;  */
+    /* border: 1px solid black; */
+    /* align-items: center;   */
+}
+.photos .photo{
+    flex-basis: 33%;
+    height: 530px;
+    /* border: 1px solid black; */
+}
+.photos .photo img{
+    width: 100%;
+    height: 100%;
+}
+.photos .photo img:hover{
+    opacity: 0.9;
+    filter: brightness(79%);
+}
+.for-you{
+    height: 620px;
+    width: 100%;
+    /* border: 1px solid black; */
+}
+.cards{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cards .card{
+    flex-basis: 33%;
+    height:500px;
+    /* border: 1px solid black; */
+}
+.cards .card img:hover{
+    opacity: 0.9;
+    filter: brightness(79%);
+}
+.clint{
+    width: auto;
+    height: 300px;
+    background: rgba(0,0,0,0.6)url(img/testimonials-1.jpg);
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    margin-top: 100px;
+}
+
+.box1{
+    margin-top: 0px;
+}
+footer{
+    height: 200px;
+    background-image: linear-gradient(rgb(134, 134, 160),rgb(254, 204, 204),white);
+}
+
+footer p{
+    padding: 50px;
+    font-size: 30px;   
+}

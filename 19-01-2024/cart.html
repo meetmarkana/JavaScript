@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        #cart{
+            display: grid;
+            grid-template-columns: repeat(4,1);
+        }
+        #img{
+            height: 200px;
+            width: 200px;
+        }
+    </style> -->
+</head>
+<body>
+    <div id="cart"></div>
+</body>
+</html>
+<script>
+    let products = JSON.parse(localStorage.getItem("cart")) || []
+
+    function displaycart(){
+        products.map((el)=>{
+            let div = document.createElement("div")
+
+     let photo=document.createElement("img")
+     photo.setAttribute("src",el.picture)
+     photo.setAttribute("id","img")
+
+     let nm = document.createElement("h1")
+     nm.innerText=el.name
+
+     let price = document.createElement("h1")
+     price.innerText="$"+el.price
+      
+
+     div.append(photo,nm,price)
+     document.getElementById("cart").append(div)
+        })
+    }
+    displaycart()
+</script>

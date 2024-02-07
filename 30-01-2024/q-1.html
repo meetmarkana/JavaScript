@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="city">
+    <button onclick="fetchWeather()">Search</button>
+    <div id="container"></div>
+
+</body>
+</html>
+
+<script>
+    function fetchWeather(){
+        document.getElementById("container").innerText=""
+        let city = document.getElementById("city").value
+        let api = "f7724c240733c45245bc7da30cd27592"
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}`)
+        .then(function(res){
+            return res.json()
+        })
+        .then(function(json){
+			console.log(json)
+			displayWeather(json)
+		})
+    }
+
+    function displayWeather(json){
+        
+        let temperature = document.createElement("h1")
+        temperature.innerText = "Main Temperature"+json.main.temp
+
+        let minumumTemp = document.createElement("h1")
+        minumumTemp.innerHTML = "Minimum Temperature :- "+json.main.temp_min
+
+        let maximumTemp = document.createElement("h1")
+        maximumTemp.innerHTML = "MAximumTemperature :- "+json.main.temp_max
+
+        let windspeed = document.createElement("h1")
+        windspeed.innerHTML="Speed of Wind :- "+json.wind.speed
+
+        let winddeg = document.createElement("h1")
+        winddeg.innerHTML="Degree of Wind :- "+json.wind.deg
+
+        let cloud = document.createElement("h1")
+        cloud.innerHTML="Cloud :- "+json.clouds.all
+
+
+        let sr = document.createElement("h1")
+        sr.innerHTML="Sunrise :- "+json.sys.sunrise
+
+        let ss = document.createElement("h1")
+        ss.innerHTML="Sunset :- "+json.sys.sunset
+
+        document.querySelector("#container").append(temperature,minumumTemp,maximumTemp,windspeed,winddeg,cloud,sr,ss)
+    }
+    
+</script>
