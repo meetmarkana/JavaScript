@@ -1,0 +1,14 @@
+#container,#cart{
+    width: 90%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    padding: 10px;
+}
+#img{
+    width: 300px;
+    height: 300px;
+}
+#cart{
+    font-size: 10px;
+}

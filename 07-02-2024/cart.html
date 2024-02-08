@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+        #cart{
+            display: grid;
+            grid-template-columns: repeat(4,1);
+        }
+        #img{
+            height: 200px;
+            width: 200px;
+        }
+    </style> -->
+</head>
+<body>
+    <div id="cart"></div>
+</body>
+</html>
+<script>
+    let products = JSON.parse(localStorage.getItem("cart")) || []
+
+    function displaycart(){
+        document.getElementById("cart").innerHTML =""
+
+        products.map((el,index)=>{
+            let div = document.createElement("div")
+
+     let photo=document.createElement("img")
+     photo.setAttribute("src",el.picture)
+     photo.setAttribute("id","img")
+
+     let nm = document.createElement("h1")
+     nm.innerText=el.name
+
+     let price = document.createElement("h1")
+     price.innerText="$"+el.price
+      
+     let deleteBtn = document.createElement("button")
+     deleteBtn.innerHTML = "Delete"
+
+     let quantity = document.createElement("h4")
+     quantity.innerHTML = "Quantity = "+el.quantity
+    
+     deleteBtn.addEventListener("click",function(){
+                products.splice(index,1)
+                localStorage.setItem("cart",JSON.stringify(products))
+                location.reload()
+            })
+
+     div.append(photo,nm,price,deleteBtn,quantity)
+
+     document.getElementById("cart").append(div)
+        })
+    }
+    displaycart()
+</script>
