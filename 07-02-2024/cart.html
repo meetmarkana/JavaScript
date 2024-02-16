@@ -22,11 +22,11 @@
 </html>
 <script>
     let products = JSON.parse(localStorage.getItem("cart")) || []
-
+    
     function displaycart(){
-        document.getElementById("cart").innerHTML =""
-
+        document.getElementById("cart").innerHTML=""
         products.map((el,index)=>{
+            
             let div = document.createElement("div")
 
      let photo=document.createElement("img")
@@ -38,7 +38,10 @@
 
      let price = document.createElement("h1")
      price.innerText="$"+el.price
-      
+     
+     let quantity = document.createElement("p")
+     quantity.innerHTML = "Quantity : " + el.quantity
+
      let deleteBtn = document.createElement("button")
      deleteBtn.innerHTML = "Delete"
     
@@ -46,9 +49,10 @@
                 products.splice(index,1)
                 localStorage.setItem("cart",JSON.stringify(products))
                 displayCart()
+                location.reload()
             })
 
-     div.append(photo,nm,price,deleteBtn)
+     div.append(photo,nm,price,quantity,deleteBtn)
 
      document.getElementById("cart").append(div)
         })

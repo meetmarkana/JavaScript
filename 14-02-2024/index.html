@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management System</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #container{
+            height: auto;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #taskList{
+            width: 100%;
+
+        }
+        #tsklst{
+            display: flex;
+            height: auto;
+            width: 100%;
+            border: 1px solid black;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <center>
+            <h1>Tast Management System</h1>
+        
+        <form action="" id="taskform">
+            <fieldset style="width: 500px; height: 500px;">
+                <label for="">Enter Task Title</label>
+            <input type="text" id="taskinp">
+            <br><br>
+            <label for="">Enter Task Description</label>
+            <input type="text" id="discinp">
+            <br><br>
+            <label for="">Enter Due Date</label>
+            <input type="date" id="dateinp">
+            <br><br>
+            <label for="">Enter Priority</label>
+            <select id="priority">
+                <option value="">Select</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <br><br>
+
+            <button type="submit">Add Task</button>
+
+            </fieldset>
+        </form>
+
+        <br><br><br>
+
+        <div id="tasklist">
+            <h4>FILTER:</h4> <br>
+            <select id="filter" name="filter" >
+              <option value="all">All</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+      
+          </div>
+
+        <br><br><br>
+        <h2>TaskList :- </h2>
+       
+    </center>
+    <div id="tsklst">
+
+    
+    </div>
+    
+ </div>
+</body>
+</html>
+<script src="q-1.js"></script>
