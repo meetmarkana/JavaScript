@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -153,4 +154,163 @@ product.quantity = 1
     localStorage.setItem("cart",JSON.stringify(selectedproducts))
     }
     
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <select name="" id="sorting">
+        <option value="">Sort</option>
+        <option value="HTL">High to Low</option>
+        <option value="LTH">Low to High</option>
+        <option value="A-Z">A-Z</option>
+        <option value="Z-A">Z-A</option>
+    </select>
+<center>
+    <div id="container"></div>
+    <div id="cart"></div>
+</center>
+
+    
+</body>
+</html>
+<script>
+    let products = [
+        {
+            id:1,
+            name:"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+            price:109.95,
+            picture:"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        },
+        {   id:2,
+            name:"Mens Casual Premium Slim Fit T-Shirts",
+            price:115.95,
+            picture:"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+        },
+        {   id:3,
+            name:"Mens Cotton Jacket",
+            price:39.95,
+            picture:"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+        },
+        {
+            id:4,
+            name:"Gold & Silver Dragon Station Chain Bracele",
+            price:109.95,
+            picture:"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
+        },
+        {
+            id:5,
+            name:"Solid Gold Petite Micropave",
+            price:19.95,
+            picture:"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
+        },
+        {   id:6,
+            name:"White Gold Plated Princess",
+            price:15.95,
+            picture:"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
+        },
+        {   id:7,
+            name:"Pierced Owl Rose Gold Plated Stainless Steel Double",
+            price:49.95,
+            picture:"https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg"
+        },
+        {
+            id:8,
+            name:"Snowboard Jacket Winter Coats",
+            price:10.95,
+            picture:"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
+        }
+    ]
+
+    let cartbutton = document.createElement("button")
+    cartbutton.innerHTML = "CART"
+    document.getElementById("cart").append(cartbutton)
+
+    cartbutton.addEventListener("click",function(){
+        window.open("cart.html")
+    })
+
+    function showProduct(products){
+        document.getElementById("container").innerHTML = ""
+        products.map((el,i)=>{
+            let div = document.createElement("div")
+
+            let photo = document.createElement("img")
+            photo.setAttribute("src",el.picture)
+            photo.setAttribute("id","img")
+
+            let nm = document.createElement("h5")
+            nm.innerText = el.name
+
+            let mn = document.createElement("h4")
+            mn.innerText = "₹ "+el.price
+
+            let btn = document.createElement("button")
+            btn.innerHTML = "ADD TO CART"
+
+            btn.addEventListener("click",function(){
+                addTocart(i)
+            })
+            div.append(photo , nm , mn , btn)
+            document.querySelector("#container").append(div)
+        
+    })
+    }
+
+    showProduct(products)
+
+    let sortselect = document.getElementById("sorting")
+    sortselect.addEventListener("change",()=>{
+
+        let selected = sortselect.value
+
+        let selectedValue = []
+
+        if(selected === "LTH")
+        {
+            selectedValue = products.slice().sort((a,b)=>a.price - b.price)
+        }
+        else if(selected === "HTL")
+        {
+            selectedValue = products.slice().sort((a,b)=>b.price - a.price)
+        }
+        else if(selected === "A-Z")
+        {
+            selectedValue = products.slice().sort((a,b)=>a.name.localeCompare(b.name))
+        }
+        else if(selected === "Z-A")
+        {
+            selectedValue = products.slice().sort((a,b)=>b.name.localeCompare(a.name))
+        }
+
+        showProduct(selectedValue)
+    })
+    function addTocart(index){
+        // let product = products.filter((item,i)=>{
+        //     return i === index
+        // })
+
+    let product = products[index]
+
+
+    let selectedproducts = JSON.parse(localStorage.getItem("cart")) || [] 
+
+    let exsistingproduct = products.findIndex(p => p.id == product.id)
+
+    if(exsistingproduct != -1){
+        products[exsistingproduct].quantity +=1
+    }else{
+        selectedproducts.push(product)
+        product.quantity = 1
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(selectedproducts))
+    }
+    
+>>>>>>> 46edd0dddd841769c115676e473ae2e46b2f1e95
 </script>
